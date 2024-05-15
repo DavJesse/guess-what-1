@@ -42,18 +42,41 @@ func hasSuffix(str, subStr string) bool {
 	return status
 }
 
-func splitString(str, sep string) []string {
+func splitString(str string, sep string) []string {
 	var result []string
-	// var newStr string
+	var token string
 
-	for i := 0; i < len(str); i++ {
-		for j := i + 1; j < len(str); i++ {
-			if str[i:j] == sep {
-				// newStr = str[:i]
-				result = append(result, str[:i])
-				str = str[j+1:]
-			}
+	for i := 0; i<len(str); i++ {
+		if i < len(str) - len(sep) && str[i:i+len(sep)] == sep {
+			result = append(result, token)
+			token = ""
+		} else {
+			token += string(str[i])
 		}
 	}
+	result = append(result, token)
 	return result
+}
+
+func Atoi(str string) (int, string) {
+	var rtnStr string
+	var intSlc []int
+	var digit int
+	sign := 1
+
+	if str[0] == '-' {
+		sign = -1
+	}
+
+	for _, r := range str {
+		if r >= '0' && r <= '9' {
+			digit = int(r - '0')
+			intSlc = append(intSlc, digit)
+		} else {
+			rtnStr = "Data in file contains non-integer characters"
+		}
+	}
+	for _, v := range intSlc {
+		
+	}
 }
