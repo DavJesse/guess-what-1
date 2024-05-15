@@ -6,6 +6,8 @@ import (
 )
 
 func main() {
+	var numSlc []int
+	
 	if len(os.Args) != 2 {
 		os.Stdout.WriteString("This program only takes one file as input\n")
 		return
@@ -29,7 +31,9 @@ func main() {
 
 	// os.Stdout.WriteString(file + "\n")
 	dataSlc := splitString(file, "\n")
-	fmt.Printf("%q\n", dataSlc)
+	numSlc = sliceTransfm(dataSlc)
+	
+	fmt.Printf("%q\n", numSlc)
 }
 
 func hasSuffix(str, subStr string) bool {
@@ -59,6 +63,7 @@ func splitString(str string, sep string) []string {
 }
 
 func Atoi(str string) (int, string) {
+	var result int
 	var rtnStr string
 	var intSlc []int
 	var digit int
@@ -68,8 +73,10 @@ func Atoi(str string) (int, string) {
 		sign = -1
 	}
 
-	for _, r := range str {
-		if r >= '0' && r <= '9' {
+	for i, r := range str {
+		if i == 0 && r == '-' {
+			sign = -1
+		} else if r >= '0' && r <= '9' {
 			digit = int(r - '0')
 			intSlc = append(intSlc, digit)
 		} else {
@@ -77,6 +84,28 @@ func Atoi(str string) (int, string) {
 		}
 	}
 	for _, v := range intSlc {
-		
+		result = result *10 + v
 	}
+	result *= sign
+	return result, rtnStr
+}
+
+func sliceTransfm(strSlc []string) []int {
+	var numSlc []int
+	var num int
+	var str string
+	for _, v := range strSlc {
+		num, str = Atoi(v)
+		if str != "" {
+			printLn(str)
+			os.Exit(0)
+		} else {
+			numSlc = append(numSlc, num)
+		}
+	}
+	return numSlc
+}
+
+func printLn(str string) {
+	os.Stdout.WriteString(str + "\n")
 }
