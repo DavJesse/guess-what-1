@@ -28,6 +28,7 @@ func splitString(str string, sep string) []string {
 		if result[i] == "" {
 			if i < len(result)-1 {
 				result = append(result[:i], result[i+1:]...)
+				i--
 			} else {
 				result = result[:i]
 			}
@@ -51,14 +52,15 @@ func Itoa(num int) string {
 	div = num
 
 	for div > 0 {
-		mod = div%10
+		mod = div % 10
 		div /= 10
 
 		numSlc = append(numSlc, mod)
 	}
-	
+
 	for _, n := range numSlc {
 		char = int32(n) + '0'
+		result += string(char)
 	}
-
+	return result
 }

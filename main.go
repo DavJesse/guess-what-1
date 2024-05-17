@@ -31,7 +31,12 @@ func main() {
 
 	// os.Stdout.WriteString(file + "\n")
 	dataSlc := splitString(file, "\n")
+	fmt.Printf("data slice: %q\n", dataSlc)
 	numSlc = sliceTransfm(dataSlc)
 
-	fmt.Println(numSlc)
+	fmt.Println("number slice: ", numSlc)
+
+	average := average(numSlc)
+
+	printLn("Average: " + Itoa(average))
 }
