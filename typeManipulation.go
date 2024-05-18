@@ -1,7 +1,6 @@
 package main
 
 import (
-	"fmt"
 	"os"
 )
 
@@ -26,7 +25,6 @@ func Atoi(str string) (int, string) {
 		result = result*10 + digit
 	}
 	result *= sign
-	fmt.Println(result)
 
 	return result, rtnStr
 }
@@ -36,17 +34,16 @@ func sliceTransfm(strSlc []string) []int {
 	var num int
 	var str string
 
-	//fmt.Println("1", strSlc)
+	// fmt.Println("1", strSlc)
 	for _, v := range strSlc {
 		num, str = Atoi(v)
 		if str != "" {
 			printLn(str)
 			os.Exit(0)
 		} else {
-			//fmt.Println(num)
+			// fmt.Println(num)
 			numSlc = append(numSlc, num)
 		}
 	}
-	fmt.Printf("%v\n", numSlc)
 	return numSlc
 }

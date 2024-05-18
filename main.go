@@ -1,13 +1,10 @@
 package main
 
 import (
-	"fmt"
 	"os"
 )
 
 func main() {
-	var numSlc []int
-
 	if len(os.Args) != 2 {
 		os.Stdout.WriteString("This program only takes one file as input\n")
 		return
@@ -28,15 +25,13 @@ func main() {
 	}
 
 	file := string(rawFile)
-
-	// os.Stdout.WriteString(file + "\n")
 	dataSlc := splitString(file, "\n")
-	fmt.Printf("data slice: %q\n", dataSlc)
-	numSlc = sliceTransfm(dataSlc)
 
-	fmt.Println("number slice: ", numSlc)
+	numSlc := sliceTransfm(dataSlc)
 
 	average := average(numSlc)
+	median := median(numSlc)
 
 	printLn("Average: " + Itoa(average))
+	printLn("Median: " + Itoa(median))
 }
