@@ -4,7 +4,7 @@ import "testing"
 
 func TestHasSuffix(t *testing.T) {
 	str := "String"
-	subStr := "Str"
+	subStr := "ing"
 	got := hasSuffix(str, subStr)
 	expected := true
 
