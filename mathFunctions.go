@@ -33,7 +33,7 @@ func median(numSlc []int) float64 {
 
 	if len(numSlc) > 2 {
 		if len(numSlc)%2 != 0 {
-			median = float64(numSlc[half+1])
+			median = float64(numSlc[half])
 		} else {
 			medSlc = append(medSlc, numSlc[half-1], numSlc[half])
 			median = average(medSlc)
