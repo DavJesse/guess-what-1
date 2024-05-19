@@ -42,5 +42,14 @@ func TestVariance(t *testing.T) {
 	}
 }
 
-// func testStandardDeviation(*testing) {
-// }
+func TestStandardDeviation(t *testing.T) {
+	variance := float64(9)
+	got := standardDeviation(variance)
+	expected := float64(3)
+
+	if got != expected {
+		t.Errorf("Got: %f", got)
+		t.Errorf("Expected: %f", expected)
+		t.Error("TestStandardDeviation Failed")
+	}
+}
