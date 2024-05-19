@@ -15,7 +15,7 @@ func TestHasSuffix(t *testing.T) {
 	}
 }
 
-func TestSplitstring(t *testing.T) {
+func TestSplitString(t *testing.T) {
 	str := "Unit-Testing"
 	sep := "-"
 	got := splitString(str, sep)
@@ -25,11 +25,22 @@ func TestSplitstring(t *testing.T) {
 		if got[i] != expected[i] || len(got) != len(expected) {
 			t.Errorf("Got: %s", got)
 			t.Errorf("Expected: %s", expected)
-			t.Errorf("Test SplitStringFailed!")
+			t.Errorf("TestSplitString Failed!")
 		}
 	}
 }
 
+func TestItoa(t *testing.T) {
+	num := 123
+	got := Itoa(num)
+	expected := "123"
+
+		if got != expected {
+		t.Errorf("Got: %s", got)
+		t.Errorf("Expected: %s", expected)
+		t.Errorf("TestItoa Failed!")
+	}
+}
 // got := hasSuffix(str, subStr)
 // 	expected := true
 
