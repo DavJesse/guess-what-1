@@ -35,12 +35,13 @@ func TestItoa(t *testing.T) {
 	got := Itoa(num)
 	expected := "123"
 
-		if got != expected {
+	if got != expected {
 		t.Errorf("Got: %s", got)
 		t.Errorf("Expected: %s", expected)
 		t.Errorf("TestItoa Failed!")
 	}
 }
+
 // got := hasSuffix(str, subStr)
 // 	expected := true
 
