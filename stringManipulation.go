@@ -49,6 +49,10 @@ func Itoa(num int) string {
 		num *= -1
 	}
 
+	if num == 0 {
+		result = "0"
+	}
+
 	div = num
 
 	for div > 0 {

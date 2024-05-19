@@ -1,6 +1,7 @@
 package main
 
 import (
+	"math"
 	"os"
 )
 
@@ -31,7 +32,16 @@ func main() {
 
 	average := average(numSlc)
 	median := median(numSlc)
+	variance := variance(numSlc, average)
+	standardDeviation := standardDeviation(variance)
 
-	printLn("Average: " + Itoa(average))
-	printLn("Median: " + Itoa(median))
+	ave := int(math.Round(average))
+	med := int(math.Round(median))
+	vrnc := int(math.Round(variance))
+	sD := int(math.Round(standardDeviation))
+
+	printLn("Average: " + Itoa(ave))
+	printLn("Median: " + Itoa(med))
+	printLn("Variance: " + Itoa(vrnc))
+	printLn("Standard Deviation: " + Itoa(sD))
 }
