@@ -9,8 +9,8 @@ func TestHasSuffix(t *testing.T) {
 	expected := true
 
 	if got != expected {
-		t.Errorf("Got: %b", got)
-		t.Errorf("Expected: %b", expected)
+		t.Errorf("Got: %t", got)
+		t.Errorf("Expected: %t", expected)
 		t.Errorf("TestHasSuffix Failed!")
 	}
 }
