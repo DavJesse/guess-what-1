@@ -53,3 +53,15 @@ func TestStandardDeviation(t *testing.T) {
 		t.Error("TestStandardDeviation Failed")
 	}
 }
+
+func TestSquare(t *testing.T) {
+	num := float64(2)
+	got := square(num)
+	expected := float64(4)
+
+	if got != expected {
+		t.Errorf("Got: %f", got)
+		t.Errorf("Expected: %f", expected)
+		t.Error("TestSquare Failed")
+	}
+}
