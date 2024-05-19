@@ -1,6 +1,9 @@
 package main
 
-import "testing"
+import (
+	"math"
+	"testing"
+)
 
 func TestAverage(t *testing.T) {
 	intSlc := []int{1, 2, 3}
@@ -26,8 +29,18 @@ func TestMedian(t *testing.T) {
 	}
 }
 
-// func testVariance(*testing) {
-// }
+func TestVariance(t *testing.T) {
+	intSlc := []int{1, 2, 3, 4, 5, 6, 7}
+	mean := average(intSlc)
+	got := math.Round(variance(intSlc, mean))
+	expected := float64(5)
+
+	if got != expected {
+		t.Errorf("Got: %f", got)
+		t.Errorf("Expected: %f", expected)
+		t.Error("TestVariance Failed")
+	}
+}
 
 // func testStandardDeviation(*testing) {
 // }
