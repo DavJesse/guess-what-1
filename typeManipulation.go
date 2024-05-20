@@ -34,14 +34,12 @@ func sliceTransfm(strSlc []string) []int {
 	var num int
 	var str string
 
-	// fmt.Println("1", strSlc)
 	for _, v := range strSlc {
 		num, str = Atoi(v)
 		if str != "" {
 			printLn(str)
 			os.Exit(0)
 		} else {
-			// fmt.Println(num)
 			numSlc = append(numSlc, num)
 		}
 	}
