@@ -19,7 +19,11 @@ func Atoi(str string) (int, string) {
 			continue
 		}
 		if r < '0' || r > '9' {
-			rtnStr = "Your data set contains non-numeric charaters"
+			if r == '.' {
+				rtnStr = "This program only takes whole numbers as data input"
+			} else {
+				rtnStr = "Your data set contains non-numeric charaters"
+			}
 		}
 		digit = int(r - '0')
 		result = result*10 + digit

@@ -49,7 +49,7 @@ func variance(numSlc []int, mean float64) float64 {
 	var sum float64
 	var sqr float64
 	var result float64
-	var div float64 = float64(len(numSlc) - 1)
+	var div float64 = float64(len(numSlc))
 
 	for _, n := range numSlc {
 		sqr = square(float64(n) - mean)
