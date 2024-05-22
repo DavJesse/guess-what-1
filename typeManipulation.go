@@ -59,6 +59,6 @@ func sortSlice(numSlc []int) []int {
 			}
 		}
 	}
-	
+
 	return numSlc
 }

@@ -70,7 +70,7 @@ func variance(numSlc []int, mean float64) float64 {
 	return result
 }
 
-//Calculates the Standard Deviation of data set
+// Calculates the Standard Deviation of data set
 func standardDeviation(variance float64) float64 {
 
 	//Calculate square root of variance
@@ -78,7 +78,7 @@ func standardDeviation(variance float64) float64 {
 	return result
 }
 
-//Calculates the square of any integer
+// Calculates the square of any integer
 func square(n float64) float64 {
 	return n * n
 }

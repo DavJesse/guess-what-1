@@ -1,6 +1,6 @@
 package main
 
-//Detect whether a string starts with a specific set of characters
+// Detect whether a string starts with a specific set of characters
 func hasSuffix(str, subStr string) bool {
 	var status bool
 	diff := len(str) - len(subStr)
@@ -13,7 +13,7 @@ func hasSuffix(str, subStr string) bool {
 	return status
 }
 
-//Split a string at a separator
+// Split a string at a separator
 func splitString(str string, sep string) []string {
 	var result []string
 	var token string
@@ -58,7 +58,8 @@ func splitString(str string, sep string) []string {
 
 	return result
 }
-//Converts an integer to a string
+
+// Converts an integer to a string
 func Itoa(num int) string {
 	var div int
 	var char int32

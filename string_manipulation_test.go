@@ -2,7 +2,7 @@ package main
 
 import "testing"
 
-//Test hasSuffix function
+// Test hasSuffix function
 func TestHasSuffix(t *testing.T) {
 	str := "String"
 	subStr := "ing"
@@ -16,7 +16,7 @@ func TestHasSuffix(t *testing.T) {
 	}
 }
 
-//Test splitString function
+// Test splitString function
 func TestSplitString(t *testing.T) {
 	str := "Unit-Testing"
 	sep := "-"
@@ -33,7 +33,7 @@ func TestSplitString(t *testing.T) {
 	}
 }
 
-//Test Itoa function
+// Test Itoa function
 func TestItoa(t *testing.T) {
 	num := 123
 	got := Itoa(num)
