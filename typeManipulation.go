@@ -49,3 +49,16 @@ func sliceTransfm(strSlc []string) []int {
 	}
 	return numSlc
 }
+
+func sortSlice(numSlc []int) []int {
+
+	for i := 0; i < len(numSlc); i++ {
+		for j := i + 1; j < len(numSlc); j++ {
+			if numSlc[i] > numSlc[j] {
+				numSlc[i], numSlc[j] = numSlc[j], numSlc[i]
+			}
+		}
+	}
+	
+	return numSlc
+}
