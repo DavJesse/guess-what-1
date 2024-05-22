@@ -44,7 +44,8 @@ func median(numSlc []int) float64 {
 			median = average(medSlc)
 		}
 	} else {
-		//
+
+		//If only two items in the slice, the median is the average
 		median = average(numSlc)
 	}
 
@@ -57,20 +58,27 @@ func variance(numSlc []int, mean float64) float64 {
 	var result float64
 	var div float64 = float64(len(numSlc))
 
+	//Calculate sum of the square of the differences between the value of each element and the mean
 	for _, n := range numSlc {
 		sqr = square(float64(n) - mean)
 		sum += sqr
 	}
 
+	//Divide sum of differences by the umber of elements in the slice
 	result = sum / div
+
 	return result
 }
 
+//Calculates the Standard Deviation of data set
 func standardDeviation(variance float64) float64 {
+
+	//Calculate square root of variance
 	result := math.Sqrt(variance)
 	return result
 }
 
+//Calculates the square of any integer
 func square(n float64) float64 {
 	return n * n
 }

@@ -33,7 +33,7 @@ func TestVariance(t *testing.T) {
 	intSlc := []int{1, 2, 3, 4, 5, 6, 7}
 	mean := average(intSlc)
 	got := math.Round(variance(intSlc, mean))
-	expected := float64(5)
+	expected := float64(4)
 
 	if got != expected {
 		t.Errorf("Got: %f", got)
@@ -63,5 +63,19 @@ func TestSquare(t *testing.T) {
 		t.Errorf("Got: %f", got)
 		t.Errorf("Expected: %f", expected)
 		t.Error("TestSquare Failed")
+	}
+}
+
+func TestSortSlice(t *testing.T) {
+	testSlc := []int{4, 2, 3, 1}
+	expected := []int{1, 2, 3, 4}
+	got := sortSlice(testSlc)
+
+	for i := 0; i < len(expected); i++ {
+		if got[i] != expected[i] || len(got) != len(expected) {
+			t.Errorf("Got: %d", got)
+			t.Errorf("Expected: %d", expected)
+			t.Errorf("TestSortSlice Failed!")
+		}
 	}
 }
