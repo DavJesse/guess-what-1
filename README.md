@@ -50,4 +50,4 @@ The program reads the data from the specified file, calculates the average, medi
 ## Contributing
 If you encounter any issues or have suggestions for improvements, feel free to contribute to the project. You can submit bug reports or pull requests on the GitHub repository.
 ## License
-This project is licensed under the MIT License. Feel free to use, modify, and distribute the code for personal or commercial purposes.
+This project is licensed under the [MIT License](https://en.wikipedia.org/wiki/MIT_License). Feel free to use, modify, and distribute the code for personal or commercial purposes.
