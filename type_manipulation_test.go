@@ -2,7 +2,7 @@ package main
 
 import "testing"
 
-//Test Atoi function
+// Test Atoi function
 func TestAtoi(t *testing.T) {
 	testStr := "123"
 	expected := 123
@@ -15,7 +15,7 @@ func TestAtoi(t *testing.T) {
 	}
 }
 
-//Test sliceTransfm function
+// Test sliceTransfm function
 func TestTransfm(t *testing.T) {
 	testSlc := []string{"1", "2", "3"}
 	expected := []int{1, 2, 3}

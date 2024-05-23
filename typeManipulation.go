@@ -50,7 +50,7 @@ func sliceTransfm(strSlc []string) []int {
 	var numSlc []int
 	var num int
 	var str string
-//Range over each element in the slice, coverting the strings to integers
+	//Range over each element in the slice, coverting the strings to integers
 	for _, v := range strSlc {
 		num, str = Atoi(v)
 
@@ -67,7 +67,7 @@ func sliceTransfm(strSlc []string) []int {
 	return numSlc
 }
 
-//Sort the elements of a slice in ascending order
+// Sort the elements of a slice in ascending order
 func sortSlice(numSlc []int) []int {
 
 	for i := 0; i < len(numSlc); i++ {
