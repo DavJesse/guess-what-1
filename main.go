@@ -21,7 +21,7 @@ func main() {
 	rawFile, err := os.ReadFile(arg)
 	if err != nil {
 		printF("Math-skills encountered a problem in reading ", arg)
-		printF("Check " + arg + "and re-submit a valid file\n")
+		printF("Check ", arg + "and re-submit a valid file")
 		return
 	}
 
