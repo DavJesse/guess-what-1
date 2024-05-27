@@ -5,7 +5,6 @@ This program is designed to perform statistical calculations on a set of data pr
 To run the program, execute the following command in your terminal:
 
 ```
-bash
 $ go run . text-file.txt
 ```
 
@@ -26,7 +25,6 @@ Each line in the file represents one value of the statistical population. While 
 
 After reading the file, the program will execute each of the calculations mentioned above and print the results to the terminal in the following format (rounded to the nearest whole number):
 ```
-bash
 Average: 35
 Median: 4
 Variance: 5

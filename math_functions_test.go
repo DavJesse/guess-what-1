@@ -5,12 +5,12 @@ import (
 	"testing"
 )
 
-// Test average function
 func TestAverage(t *testing.T) {
 	intSlc := []int{1, 2, 3}
 	got := average(intSlc)
 	expected := float64(2)
 
+	// Compare 'got' and 'expected'
 	if got != expected {
 		t.Errorf("Got: %f", got)
 		t.Errorf("Expected: %f", expected)
@@ -18,12 +18,12 @@ func TestAverage(t *testing.T) {
 	}
 }
 
-// Test median function
 func TestMedian(t *testing.T) {
 	intSlc := []int{1, 2, 3}
 	got := median(intSlc)
 	expected := float64(2)
 
+	// Compare 'got' and 'expected'
 	if got != expected {
 		t.Errorf("Got: %f", got)
 		t.Errorf("Expected: %f", expected)
@@ -31,13 +31,13 @@ func TestMedian(t *testing.T) {
 	}
 }
 
-// Test variance function
 func TestVariance(t *testing.T) {
 	intSlc := []int{1, 2, 3, 4, 5, 6, 7}
 	mean := average(intSlc)
 	got := math.Round(variance(intSlc, mean))
 	expected := float64(4)
 
+	// Compare 'got' and 'expected'
 	if got != expected {
 		t.Errorf("Got: %f", got)
 		t.Errorf("Expected: %f", expected)
@@ -45,12 +45,12 @@ func TestVariance(t *testing.T) {
 	}
 }
 
-// Test standardDeviation function
 func TestStandardDeviation(t *testing.T) {
 	variance := float64(9)
 	got := standardDeviation(variance)
 	expected := float64(3)
 
+	// Compare 'got' and 'expected'
 	if got != expected {
 		t.Errorf("Got: %f", got)
 		t.Errorf("Expected: %f", expected)
@@ -58,12 +58,12 @@ func TestStandardDeviation(t *testing.T) {
 	}
 }
 
-// Test square function
 func TestSquare(t *testing.T) {
 	num := float64(2)
 	got := square(num)
 	expected := float64(4)
 
+	// Compare 'got' and 'expected'
 	if got != expected {
 		t.Errorf("Got: %f", got)
 		t.Errorf("Expected: %f", expected)
@@ -71,13 +71,12 @@ func TestSquare(t *testing.T) {
 	}
 }
 
-// Test sortSlice function
 func TestSortSlice(t *testing.T) {
 	testSlc := []int{4, 2, 3, 1}
 	expected := []int{1, 2, 3, 4}
 	got := sortSlice(testSlc)
 
-	//Range over slices, comparing every element at ever index
+	// Range over slices, comparing every element at ever index
 	for i := 0; i < len(expected); i++ {
 		if got[i] != expected[i] || len(got) != len(expected) {
 			t.Errorf("Got: %d", got)
