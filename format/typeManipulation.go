@@ -1,10 +1,6 @@
 package format
 
-import (
-	"os"
-
-	"math-skills/stdout"
-)
+import "log"
 
 func Atoi(str string) (int, string) {
 	var result int
@@ -52,8 +48,7 @@ func SliceTransfm(strSlc []string) []int {
 
 		// Print error messages from invalid strings
 		if str != "" {
-			stdout.PrintLn(str)
-			os.Exit(0)
+			log.Fatal(str)
 		} else {
 			numSlc = append(numSlc, num)
 		}
