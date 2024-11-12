@@ -1,7 +1,7 @@
 package testing
 
 import (
-	"math-skills/format"
+	"student/format"
 	"testing"
 )
 

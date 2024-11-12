@@ -7,8 +7,8 @@ import (
 	"math"
 	"os"
 
-	"math-skills/format"
-	"math-skills/maths"
+	"student/format"
+	"student/maths"
 )
 
 func main() {

@@ -1,7 +1,7 @@
 package maths
 
 import (
-	"math-skills/format"
+	"student/format"
 	"math"
 )
 

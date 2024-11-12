@@ -3,7 +3,7 @@ package testing
 import (
 	"testing"
 
-	"math-skills/format"
+	"student/format"
 )
 
 func TestHasSuffix(t *testing.T) {

@@ -4,8 +4,8 @@ import (
 	"math"
 	"testing"
 
-	"math-skills/format"
-	maths "math-skills/maths"
+	"student/format"
+	maths "student/maths"
 )
 
 func TestAverage(t *testing.T) {
