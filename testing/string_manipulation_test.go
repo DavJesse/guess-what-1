@@ -1,11 +1,15 @@
-package main
+package testing
 
-import "testing"
+import (
+	"testing"
+
+	"math-skills/format"
+)
 
 func TestHasSuffix(t *testing.T) {
 	str := "String"
 	subStr := "ing"
-	got := hasSuffix(str, subStr)
+	got := format.HasSuffix(str, subStr)
 	expected := true
 
 	// Compare 'got' and 'expected'
@@ -19,7 +23,7 @@ func TestHasSuffix(t *testing.T) {
 func TestSplitString(t *testing.T) {
 	str := "Unit-Testing"
 	sep := "-"
-	got := splitString(str, sep)
+	got := format.SplitString(str, sep)
 	expected := []string{"Unit", "Testing"}
 
 	// Compare 'got' and 'expected' at various indices
@@ -34,7 +38,7 @@ func TestSplitString(t *testing.T) {
 
 func TestItoa(t *testing.T) {
 	num := 123
-	got := Itoa(num)
+	got := format.Itoa(num)
 	expected := "123"
 
 	// Compare 'got' and 'expected'

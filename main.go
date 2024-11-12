@@ -3,12 +3,16 @@ package main
 import (
 	"math"
 	"os"
+
+	"math-skills/format"
+	"math-skills/maths"
+	"math-skills/stdout"
 )
 
 func main() {
 	// Exit function if too many or not enough arguments are given
 	if len(os.Args) != 2 {
-		printLn("This program only takes one file as input")
+		stdout.PrintLn("This program only takes one file as input")
 		return
 	}
 
@@ -16,24 +20,24 @@ func main() {
 	arg := os.Args[1]
 
 	// Check whether file has a '.txt' extension
-	if !hasSuffix(arg, ".txt") {
-		printLn("wrong file format!")
-		printLn("Please enter a valid text file with a '.txt' extension")
+	if !format.HasSuffix(arg, ".txt") {
+		stdout.PrintLn("wrong file format!")
+		stdout.PrintLn("Please enter a valid text file with a '.txt' extension")
 		return
 	}
 
 	// Read file to extract data
 	rawFile, err := os.ReadFile(arg)
 	if err != nil {
-		printF("math-skills encountered a problem in reading ", arg)
-		printF("Check ", arg+" and re-submit a valid file")
+		stdout.PrintF("math-skills encountered a problem in reading ", arg)
+		stdout.PrintF("Check ", arg+" and re-submit a valid file")
 		return
 	}
 
 	// Exist program ashould 'arg' be empty
 	if len(rawFile) == 0 {
-		printF(arg, " is empty!")
-		printF("Populate ", arg+" and try again")
+		stdout.PrintF(arg, " is empty!")
+		stdout.PrintF("Populate ", arg+" and try again")
 		return
 	}
 
@@ -41,14 +45,14 @@ func main() {
 	file := string(rawFile)
 
 	// Split 'file' at '\n' and convert to []int
-	dataSlc := splitString(file, "\n")
-	numSlc := sliceTransfm(dataSlc)
+	dataSlc := format.SplitString(file, "\n")
+	numSlc := format.SliceTransfm(dataSlc)
 
 	// Calculate average, median, variance, standard deviation
-	average := average(numSlc)
-	median := median(numSlc)
-	variance := variance(numSlc, average)
-	standardDeviation := standardDeviation(variance)
+	average := maths.Average(numSlc)
+	median := maths.Median(numSlc)
+	variance := maths.Variance(numSlc, average)
+	standardDeviation := maths.StandardDeviation(variance)
 
 	// Round off the values calculated above to the next whole number
 	ave := int(math.Round(average))
@@ -57,8 +61,8 @@ func main() {
 	sD := int(math.Round(standardDeviation))
 
 	// Print average, median, variance, standard deviation values to terminal
-	printLn("Average: " + Itoa(ave))
-	printLn("Median: " + Itoa(med))
-	printLn("Variance: " + Itoa(vrnc))
-	printLn("Standard Deviation: " + Itoa(sD))
+	stdout.PrintLn("Average: " + format.Itoa(ave))
+	stdout.PrintLn("Median: " + format.Itoa(med))
+	stdout.PrintLn("Variance: " + format.Itoa(vrnc))
+	stdout.PrintLn("Standard Deviation: " + format.Itoa(sD))
 }

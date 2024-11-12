@@ -1,13 +1,16 @@
-package main
+package testing
 
 import (
 	"math"
 	"testing"
+
+	"math-skills/format"
+	maths "math-skills/maths"
 )
 
 func TestAverage(t *testing.T) {
 	intSlc := []int{1, 2, 3}
-	got := average(intSlc)
+	got := maths.Average(intSlc)
 	expected := float64(2)
 
 	// Compare 'got' and 'expected'
@@ -20,7 +23,7 @@ func TestAverage(t *testing.T) {
 
 func TestMedian(t *testing.T) {
 	intSlc := []int{1, 2, 3}
-	got := median(intSlc)
+	got := maths.Median(intSlc)
 	expected := float64(2)
 
 	// Compare 'got' and 'expected'
@@ -33,8 +36,8 @@ func TestMedian(t *testing.T) {
 
 func TestVariance(t *testing.T) {
 	intSlc := []int{1, 2, 3, 4, 5, 6, 7}
-	mean := average(intSlc)
-	got := math.Round(variance(intSlc, mean))
+	mean := maths.Average(intSlc)
+	got := math.Round(maths.Variance(intSlc, mean))
 	expected := float64(4)
 
 	// Compare 'got' and 'expected'
@@ -47,7 +50,7 @@ func TestVariance(t *testing.T) {
 
 func TestStandardDeviation(t *testing.T) {
 	variance := float64(9)
-	got := standardDeviation(variance)
+	got := maths.StandardDeviation(variance)
 	expected := float64(3)
 
 	// Compare 'got' and 'expected'
@@ -60,7 +63,7 @@ func TestStandardDeviation(t *testing.T) {
 
 func TestSquare(t *testing.T) {
 	num := float64(2)
-	got := square(num)
+	got := maths.Square(num)
 	expected := float64(4)
 
 	// Compare 'got' and 'expected'
@@ -74,7 +77,7 @@ func TestSquare(t *testing.T) {
 func TestSortSlice(t *testing.T) {
 	testSlc := []int{4, 2, 3, 1}
 	expected := []int{1, 2, 3, 4}
-	got := sortSlice(testSlc)
+	got := format.SortSlice(testSlc)
 
 	// Range over slices, comparing every element at ever index
 	for i := 0; i < len(expected); i++ {

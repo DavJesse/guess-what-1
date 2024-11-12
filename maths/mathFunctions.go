@@ -1,10 +1,11 @@
-package main
+package maths
 
 import (
+	"math-skills/format"
 	"math"
 )
 
-func average(numSlc []int) float64 {
+func Average(numSlc []int) float64 {
 	var numSum float64
 	var aveDiv float64
 
@@ -21,14 +22,14 @@ func average(numSlc []int) float64 {
 	return aveDiv
 }
 
-func median(numSlc []int) float64 {
+func Median(numSlc []int) float64 {
 	var median float64
 	var medSlc []int
 
 	// Establish a reference index for the median value
 	half := len(numSlc) / 2
 
-	numSlc = sortSlice(numSlc)
+	numSlc = format.SortSlice(numSlc)
 
 	if len(numSlc) > 2 {
 		// If even, the median value will be at index 'half'
@@ -37,17 +38,17 @@ func median(numSlc []int) float64 {
 		} else {
 			// if even the median will be the average of the middle values at indices 'half-1' and 'half'
 			medSlc = append(medSlc, numSlc[half-1], numSlc[half])
-			median = average(medSlc)
+			median = Average(medSlc)
 		}
 	} else {
 		// If one or two items in the slice, the median is the average
-		median = average(numSlc)
+		median = Average(numSlc)
 	}
 
 	return median
 }
 
-func variance(numSlc []int, mean float64) float64 {
+func Variance(numSlc []int, mean float64) float64 {
 	var sum float64
 	var sqr float64
 	var result float64
@@ -55,7 +56,7 @@ func variance(numSlc []int, mean float64) float64 {
 
 	// Calculate sum of the square of the differences between the value of each element and the mean
 	for _, n := range numSlc {
-		sqr = square(float64(n) - mean)
+		sqr = Square(float64(n) - mean)
 		sum += sqr
 	}
 
@@ -65,12 +66,12 @@ func variance(numSlc []int, mean float64) float64 {
 	return result
 }
 
-func standardDeviation(variance float64) float64 {
+func StandardDeviation(variance float64) float64 {
 	// Calculate square root of variance
 	result := math.Sqrt(variance)
 	return result
 }
 
-func square(n float64) float64 {
+func Square(n float64) float64 {
 	return n * n
 }

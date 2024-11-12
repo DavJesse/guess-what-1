@@ -1,13 +1,13 @@
-package main
+package stdout
 
 import "os"
 
 // Prints every string parsed
-func printLn(str string) {
+func PrintLn(str string) {
 	os.Stdout.WriteString(str + "\n")
 }
 
 // Prints every strings parsed
-func printF(str1, str2 string) {
+func PrintF(str1, str2 string) {
 	os.Stdout.WriteString(str1 + str2 + "\n")
 }

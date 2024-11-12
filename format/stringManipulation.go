@@ -1,6 +1,6 @@
-package main
+package format
 
-func hasSuffix(str, subStr string) bool {
+func HasSuffix(str, subStr string) bool {
 	var status bool
 	diff := len(str) - len(subStr)
 
@@ -12,7 +12,7 @@ func hasSuffix(str, subStr string) bool {
 	return status
 }
 
-func splitString(str string, sep string) []string {
+func SplitString(str string, sep string) []string {
 	var result []string
 	var token string
 

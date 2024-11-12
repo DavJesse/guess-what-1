@@ -1,13 +1,16 @@
-package main
+package testing
 
-import "testing"
+import (
+	"math-skills/format"
+	"testing"
+)
 
 func TestAtoi(t *testing.T) {
 	testStr := "123"
 	expected := 123
 
 	// compare 'got' and expected
-	got, err := Atoi(testStr)
+	got, err := format.Atoi(testStr)
 	if err != "" || got != expected {
 		t.Errorf("Got: %d", got)
 		t.Errorf("Expected: %d", expected)
@@ -18,7 +21,7 @@ func TestAtoi(t *testing.T) {
 func TestTransfm(t *testing.T) {
 	testSlc := []string{"1", "2", "3"}
 	expected := []int{1, 2, 3}
-	got := sliceTransfm(testSlc)
+	got := format.SliceTransfm(testSlc)
 
 	// Range over both slices comparing 'got' and 'expected'
 	for i := 0; i < len(testSlc); i++ {

@@ -1,7 +1,9 @@
-package main
+package format
 
 import (
 	"os"
+
+	"math-skills/stdout"
 )
 
 func Atoi(str string) (int, string) {
@@ -40,7 +42,7 @@ func Atoi(str string) (int, string) {
 	return result, rtnStr
 }
 
-func sliceTransfm(strSlc []string) []int {
+func SliceTransfm(strSlc []string) []int {
 	var numSlc []int
 	var num int
 	var str string
@@ -50,7 +52,7 @@ func sliceTransfm(strSlc []string) []int {
 
 		// Print error messages from invalid strings
 		if str != "" {
-			printLn(str)
+			stdout.PrintLn(str)
 			os.Exit(0)
 		} else {
 			numSlc = append(numSlc, num)
@@ -59,7 +61,7 @@ func sliceTransfm(strSlc []string) []int {
 	return numSlc
 }
 
-func sortSlice(numSlc []int) []int {
+func SortSlice(numSlc []int) []int {
 	for i := 0; i < len(numSlc); i++ {
 		for j := i + 1; j < len(numSlc); j++ {
 			// Should an element be adjacent to a bigger one, swap them
