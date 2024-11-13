@@ -12,7 +12,9 @@ import (
 )
 
 func main() {
-	var dataSet []int = make([]int, 0)
+	var dataSet []int
+	var workData []int
+	var lowerLimit, upperLimit int
 
 	scanner := bufio.NewScanner(os.Stdin)
 	for scanner.Scan() {
@@ -22,17 +24,38 @@ func main() {
 		}
 		dataSet = append(dataSet, num)
 
+		if len(dataSet) > 14 {
+			workData = dataSet[len(dataSet)-15:]
+		} else {
+			workData = dataSet
+		}
+
 		// Calculate average and standard deviation
-		average := maths.Average(dataSet)
-		variance := maths.Variance(dataSet, average)
+		average := maths.Average(workData)
+		variance := maths.Variance(workData, average)
 		standardDeviation := maths.StandardDeviation(variance)
 
-		// Establish upper and lower limits
-		upperLimit := int(math.Round(average + 2*standardDeviation))
-		lowerLimit := int(math.Round(average - 2*standardDeviation))
+if len(workData) < 5 {
+	upperLimit = 200
+	lowerLimit = 0
+} else {
 
-		fmt.Printf("%d --> the standard input\n", num)
-		fmt.Printf("%d %d    --> the range for the next input, in this case for the number %d\n", lowerLimit, upperLimit, num)
+	// Establish upper and lower limits
+	upperLimit = int(math.Round(average + 2.5*standardDeviation))
+	lowerLimit = int(math.Round(average - 3.9*standardDeviation))
+
+	if upperLimit < 200 {
+		upperLimit = 200
+	}
+
+	if lowerLimit < 100 {
+		lowerLimit = 100
+	}
+
+}
+
+
+		fmt.Printf("%d %d\n", lowerLimit, upperLimit)
 
 	}
 
