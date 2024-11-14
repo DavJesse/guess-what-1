@@ -87,6 +87,7 @@ func RemoveOutlier(data []int) ([]int, bool) {
 	for i := range data {
 		if float64(data[i]) >= mean-3*stDev && float64(data[i]) <= mean+3*stDev {
 			result = append(result, data[i])
+			} else {
 			hasOutliers = true
 		}
 	}
