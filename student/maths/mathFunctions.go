@@ -75,3 +75,17 @@ func StandardDeviation(variance float64) float64 {
 func Square(n float64) float64 {
 	return n * n
 }
+
+func RemoveOutlier(data []int) []int {
+	var result []int
+	mean := Average(data)
+	stDev := StandardDeviation(Variance(data, mean))
+
+	for i := range data {
+		if float64(data[i]) >= mean + 3*stDev && float64(data[i]) <= mean - 3*stDev {
+			result = append(result, data[i])
+		}
+	}
+
+	return result
+}
