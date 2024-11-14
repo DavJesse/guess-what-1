@@ -77,16 +77,19 @@ func Square(n float64) float64 {
 	return n * n
 }
 
-func RemoveOutlier(data []int) []int {
+func RemoveOutlier(data []int) ([]int, bool) {
 	var result []int
+	var hasOutliers bool
+
 	mean := Average(data)
 	stDev := StandardDeviation(Variance(data, mean))
 
 	for i := range data {
 		if float64(data[i]) >= mean-3*stDev && float64(data[i]) <= mean+3*stDev {
 			result = append(result, data[i])
+			hasOutliers = true
 		}
 	}
 
-	return result
+	return result, hasOutliers
 }
