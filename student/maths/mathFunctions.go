@@ -81,13 +81,15 @@ func RemoveOutlier(data []int) ([]int, bool) {
 	var result []int
 	var hasOutliers bool
 
-	mean := Average(data)
-	stDev := StandardDeviation(Variance(data, mean))
+	data = format.SortSlice(data)
+	firstQuartile := Median(data[:len(data)/2])
+	thirdQuartile := Median(data[len(data)/2:])
+	IntQuatRange := thirdQuartile - firstQuartile
 
 	for i := range data {
-		if float64(data[i]) >= mean-3*stDev && float64(data[i]) <= mean+3*stDev {
+		if data[i] >= int((firstQuartile)-(float64(1.5)*IntQuatRange)) && data[i] <= int((thirdQuartile)+(float64(1.5)*IntQuatRange)) {
 			result = append(result, data[i])
-			} else {
+		} else {
 			hasOutliers = true
 		}
 	}

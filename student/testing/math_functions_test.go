@@ -144,9 +144,9 @@ func TestRemoveOutlier_BigDataNoOutlier(t *testing.T) {
 }
 
 func TestRemoveOutlier_BigDataWithOutlier(t *testing.T) {
-	subject := []int{1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12000, 13, 14, 15, 16}
+	subject := []int{123, 134, 145, 121, 200, 189, 108, 198, 178, -5670418515966861322}
 	got, contains := maths.RemoveOutlier(subject)
-	expected := []int{1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 13, 14, 15, 16}
+	expected := format.SortSlice([]int{123, 134, 145, 121, 200, 189, 108, 198, 178})
 
 	var g, e int
 
