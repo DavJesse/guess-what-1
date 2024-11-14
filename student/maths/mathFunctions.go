@@ -1,7 +1,6 @@
 package maths
 
 import (
-	"log"
 	"math"
 
 	"student/format"
@@ -83,7 +82,6 @@ func RemoveOutlier(data []int) []int {
 	mean := Average(data)
 	stDev := StandardDeviation(Variance(data, mean))
 
-	log.Printf("Low: %.2f\nHigh: %.2f\n",  mean+3*stDev, mean-3*stDev)
 	for i := range data {
 		if float64(data[i]) >= mean-3*stDev && float64(data[i]) <= mean+3*stDev {
 			result = append(result, data[i])
