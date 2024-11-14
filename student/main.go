@@ -13,7 +13,8 @@ import (
 
 func main() {
 	var dataSet []int
-	var workData []int
+	var workData, processed []int
+	// var containsOutlier bool
 	var lowerLimit, upperLimit int
 
 	scanner := bufio.NewScanner(os.Stdin)
@@ -24,42 +25,29 @@ func main() {
 		}
 		dataSet = append(dataSet, num)
 
-		if len(dataSet) > 14 {
-			workData = dataSet[len(dataSet)-15:]
+		if len(dataSet) > 9 {
+			workData = dataSet[len(dataSet)-10:]
+			// fmt.Printf("Before outlier removal: %d\n", workData)
+
+			processed, _ = maths.RemoveOutlier(workData)
+			// fmt.Printf("After outlier removal: %d\n", processed)
 		} else {
 			workData = dataSet
+			processed = workData
 		}
 
-		// Calculate average and standard deviation
-		average := maths.Average(workData)
-		variance := maths.Variance(workData, average)
-		standardDeviation := maths.StandardDeviation(variance)
+		// Calculate average
+		average := maths.Average(processed)
 
-if len(workData) < 5 {
-	upperLimit = 200
-	lowerLimit = 0
-} else {
-
-	// Establish upper and lower limits
-	upperLimit = int(math.Round(average + 2.5*standardDeviation))
-	lowerLimit = int(math.Round(average - 3.9*standardDeviation))
-
-	if upperLimit < 200 {
-		upperLimit = 200
-	}
-
-	if lowerLimit < 100 {
-		lowerLimit = 100
-	}
-
-}
-
+		// if containsOutlier {
+		// 	upperLimit = int(maths.Median(processed)) + 85
+		// 	lowerLimit = int(maths.Median(processed)) - 85
+		// } else {
+		upperLimit = int(math.Round(average)) + 85
+		lowerLimit = int(math.Round(average)) - 85
+		// }
 
 		fmt.Printf("%d %d\n", lowerLimit, upperLimit)
 
-	}
-
-	if err := scanner.Err(); err != nil {
-		log.Fatal(err)
 	}
 }
