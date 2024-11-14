@@ -88,3 +88,21 @@ func TestSortSlice(t *testing.T) {
 		}
 	}
 }
+
+func TestRemoveOutlier_SmallData(t *testing.T) {
+	subject := []int{1, 2, 3, 4, 5}
+	got := maths.RemoveOutlier(subject)
+	expected := []int{1, 2, 3, 4, 5}
+
+	var g, e int
+
+	for g < len(got) && e < len(expected) {
+		if got[g]!= expected[e] {
+            t.Errorf("Got: %d", got)
+            t.Errorf("Expected: %d", expected)
+            t.Error("TestRemoveOutlier Failed!")
+        }
+        g++
+        e++
+	}
+}
