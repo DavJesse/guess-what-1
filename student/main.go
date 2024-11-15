@@ -12,11 +12,10 @@ import (
 )
 
 func main() {
-	var dataSet, bef []int
-	//var processed []int
+	var dataSet []int
+	var processed, window []int
 	var lowerLimit, upperLimit int
 	var content string
-	var count int
 
 	scanner := bufio.NewScanner(os.Stdin)
 	for scanner.Scan() {
@@ -24,23 +23,26 @@ func main() {
 		if err != "" {
 			log.Fatal(err)
 		}
-		count++
-		if count < 11 {
-			bef = dataSet
-			dataSet = append(dataSet, num)
-		} else {
-			bef = dataSet[1:]
-			dataSet= append(dataSet[1:], num)
-		}
 
-		dataSet = maths.RemoveOutlier(dataSet)
+		dataSet = append(dataSet, num)
+
+		windowSize := 10
+		end := len(dataSet)
+		start := end - windowSize
+
+		if start < 0 {
+			start = 0
+		}
+		window = dataSet[start:end]
+
+		processed = maths.RemoveOutlier(window)
 
 		// Calculate average
-		average := maths.Average(dataSet)
+		average := maths.Average(processed)
 
 		upperLimit = int(math.Round(average)) + 85
 		lowerLimit = int(math.Round(average)) - 85
-		content += fmt.Sprintf("Number: %d\nAverage: %0.2f\nBefore Append: %d\nDataSet: %d\n%d - %d\n\n\n", num, average, bef, dataSet, lowerLimit, upperLimit)
+		content += fmt.Sprintf("Number: %d\nAverage: %0.2f\nProcessed: %d\n%d - %d\n\n\n", num, average, processed, lowerLimit, upperLimit)
 		os.WriteFile("data.txt", []byte(content), 0o644)
 
 		fmt.Printf("%d %d\n", lowerLimit, upperLimit)
