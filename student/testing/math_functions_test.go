@@ -91,16 +91,10 @@ func TestSortSlice(t *testing.T) {
 
 func TestRemoveOutlier_SmallData(t *testing.T) {
 	subject := []int{1, 2, 3, 4, 5}
-	got, contains := maths.RemoveOutlier(subject)
+	got := maths.RemoveOutlier(subject)
 	expected := []int{1, 2, 3, 4, 5}
 
 	var g, e int
-
-	if contains {
-		t.Error("TestRemoveOutlier Failed!")
-		t.Errorf("Expected slice not to contain outliers, got: 'true'\n")
-		return
-	}
 
 	for g < len(got) && e < len(expected) {
 		if got[g] != expected[e] {
@@ -115,16 +109,10 @@ func TestRemoveOutlier_SmallData(t *testing.T) {
 
 func TestRemoveOutlier_BigDataNoOutlier(t *testing.T) {
 	subject := []int{1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16}
-	got, contains := maths.RemoveOutlier(subject)
+	got := maths.RemoveOutlier(subject)
 	expected := []int{1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16}
 
 	var g, e int
-
-	if contains {
-		t.Error("TestRemoveOutlier Failed!")
-		t.Errorf("Expected slice not to contain outliers, got: 'true'\n")
-		return
-	}
 
 	if len(got) != len(expected) {
 		t.Error("TestRemoveOutlier Failed!")
@@ -145,16 +133,10 @@ func TestRemoveOutlier_BigDataNoOutlier(t *testing.T) {
 
 func TestRemoveOutlier_BigDataWithOutlier(t *testing.T) {
 	subject := []int{123, 134, 145, 121, 200, 189, 108, 198, 178, -5670418515966861322}
-	got, contains := maths.RemoveOutlier(subject)
+	got := maths.RemoveOutlier(subject)
 	expected := format.SortSlice([]int{123, 134, 145, 121, 200, 189, 108, 198, 178})
 
 	var g, e int
-
-	if !contains {
-		t.Error("TestRemoveOutlier Failed!")
-		t.Errorf("Expected slice to contain outliers, got: 'false'\n")
-		return
-	}
 
 	if len(got) != len(expected) {
 		t.Error("TestRemoveOutlier Failed!")
