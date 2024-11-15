@@ -12,10 +12,11 @@ import (
 )
 
 func main() {
-	var dataSet []int
-	var workData, processed []int
-	// var containsOutlier bool
+	var dataSet, bef []int
+	//var processed []int
 	var lowerLimit, upperLimit int
+	var content string
+	var count int
 
 	scanner := bufio.NewScanner(os.Stdin)
 	for scanner.Scan() {
@@ -23,29 +24,24 @@ func main() {
 		if err != "" {
 			log.Fatal(err)
 		}
-		dataSet = append(dataSet, num)
-
-		if len(dataSet) > 9 {
-			workData = dataSet[len(dataSet)-10:]
-			// fmt.Printf("Before outlier removal: %d\n", workData)
-
-			processed, _ = maths.RemoveOutlier(workData)
-			// fmt.Printf("After outlier removal: %d\n", processed)
+		count++
+		if count < 11 {
+			bef = dataSet
+			dataSet = append(dataSet, num)
 		} else {
-			workData = dataSet
-			processed = workData
+			bef = dataSet[1:]
+			dataSet= append(dataSet[1:], num)
 		}
 
-		// Calculate average
-		average := maths.Average(processed)
+		dataSet = maths.RemoveOutlier(dataSet)
 
-		// if containsOutlier {
-		// 	upperLimit = int(maths.Median(processed)) + 85
-		// 	lowerLimit = int(maths.Median(processed)) - 85
-		// } else {
+		// Calculate average
+		average := maths.Average(dataSet)
+
 		upperLimit = int(math.Round(average)) + 85
 		lowerLimit = int(math.Round(average)) - 85
-		// }
+		content += fmt.Sprintf("Number: %d\nAverage: %0.2f\nBefore Append: %d\nDataSet: %d\n%d - %d\n\n\n", num, average, bef, dataSet, lowerLimit, upperLimit)
+		os.WriteFile("data.txt", []byte(content), 0o644)
 
 		fmt.Printf("%d %d\n", lowerLimit, upperLimit)
 
