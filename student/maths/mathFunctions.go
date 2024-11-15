@@ -79,15 +79,32 @@ func Square(n float64) float64 {
 
 func RemoveOutlier(data []int) []int {
 	var result []int
-	median := Median(data) // Use median as a base for normality
+	var outlier int
+	extreemAverage := Average(data)
+	threshold := 1.5
+
+	// Not enough arguments
+	if len(data) < 3 {
+		return data
+	}
+
+	for i, val := range data {
+		snippet := make([]int, 0, len(data)-1)
+		snippet = append(snippet, data[:i]...)
+		snippet = append(snippet, data[i+1:]...)
+
+		average := Average(snippet)
+
+		if average*threshold > extreemAverage || average*threshold < extreemAverage {
+			outlier = val
+		}
+
+	}	
 
 	for _, val := range data {
-		
-		if float64(val) > median*1.5 || float64(val) < median*0.5 {
-			continue
+		if val != outlier {
+			result = append(result, val)
 		}
-		result = append(result, val)
-
 	}
 	return result
 }
