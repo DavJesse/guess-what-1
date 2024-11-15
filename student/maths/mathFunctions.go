@@ -77,22 +77,17 @@ func Square(n float64) float64 {
 	return n * n
 }
 
-func RemoveOutlier(data []int) ([]int, bool) {
+func RemoveOutlier(data []int) []int {
 	var result []int
-	var hasOutliers bool
+	median := Median(data) // Use median as a base for normality
 
-	data = format.SortSlice(data)
-	firstQuartile := Median(data[:len(data)/2])
-	thirdQuartile := Median(data[len(data)/2:])
-	IntQuatRange := thirdQuartile - firstQuartile
-
-	for i := range data {
-		if data[i] >= int((firstQuartile)-(float64(1.5)*IntQuatRange)) && data[i] <= int((thirdQuartile)+(float64(1.5)*IntQuatRange)) {
-			result = append(result, data[i])
-		} else {
-			hasOutliers = true
+	for _, val := range data {
+		
+		if float64(val) > median*1.5 || float64(val) < median*0.5 {
+			continue
 		}
-	}
+		result = append(result, val)
 
-	return result, hasOutliers
+	}
+	return result
 }
